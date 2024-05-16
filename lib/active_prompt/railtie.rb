@@ -4,6 +4,6 @@ require "rails/railtie"
 
 module ActivePrompt
   class Railtie < Rails::Railtie
-    eager_load_namespaces << ActivePrompt
+    config.eager_load_namespaces << ActivePrompt
   end
 end
