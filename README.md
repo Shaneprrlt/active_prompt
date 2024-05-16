@@ -1,6 +1,6 @@
 # ActivePrompt
 
-ActivePrompt is a gem that helps you structure and manage LLM prompts in your rails apps.
+ActivePrompt is a gem that helps you structure and manage LLM prompts in your rails apps. View the gem on [RubyGems](https://rubygems.org/gems/active_prompt_rails).
 
 ## Installation
 
