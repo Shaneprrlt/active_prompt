@@ -3,7 +3,7 @@
 require_relative "lib/active_prompt/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "active_prompt"
+  spec.name = "activeprompt"
   spec.licenses = ["MIT"]
   spec.version = ActivePrompt::VERSION
   spec.authors = ["Shane Perreault"]
