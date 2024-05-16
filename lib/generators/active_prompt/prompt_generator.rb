@@ -14,12 +14,10 @@ module ActivePrompt
         template "system.liquid", "app/prompts/templates/#{name.underscore}_prompt/system.liquid"
         template "user.liquid", "app/prompts/templates/#{name.underscore}_prompt/user.liquid"
         create_file "app/prompts/#{name.underscore}_prompt.rb", <<~RUBY
-          # This is a generated prompt class for #{file_name}
+          # frozen_string_literal: true
+
           class #{name.camelize}Prompt < ActivePrompt::Base
-            # Define your required template variables here, e.g.
             # variable :name
-            # variable :age
-            # variable :gender
           end
         RUBY
       end
