@@ -4,6 +4,6 @@ require "rails/railtie"
 
 module ActivePrompt
   class Railtie < Rails::Railtie
-    config.autoload_paths << Dir["#{config.root}/app/prompts/**/"]
+    eager_load_namespaces << ActivePrompt
   end
 end
