@@ -7,7 +7,7 @@ ActivePrompt is a gem that helps you structure and manage LLM prompts in your ra
 Add the following line to your Gemfile:
 
 ```Gemfile
-gem "active_prompt_rails", "~> 0.1.21", require: "active_prompt"
+gem "active_prompt_rails", "~> 0.1.22", require: "active_prompt"
 ```
 
 and run `bundle install`
@@ -23,6 +23,7 @@ rails g active_prompt:prompt moderate_user_comment
 This will create the following files in your rails project:
 
 ```bash
+app/prompts/application_prompt.rb
 app/prompts/moderate_user_comment_prompt.rb
 app/prompts/templates/moderate_user_comment_prompt/system.liquid
 app/prompts/templates/moderate_user_comment_prompt/user.liquid
@@ -33,7 +34,7 @@ You can add your system message and user message to the corresponding Liquid tem
 ```ruby
 # /app/prompts/moderate_user_comment_prompt.rb
 
-class ModerateUserCommentPrompt < ActivePrompt::Base
+class ModerateUserCommentPrompt < ApplicationPrompt
   variable :comment
 end
 ```
@@ -72,6 +73,35 @@ response = client.chat(
 )
 content = response.dig("choices", 0, "message", "content")
 data = JSON.parse(content)
+puts data
+```
+
+You can also override the `run()` method in `ApplicationPrompt` to integrate your LLM layer with ActivePrompt and execute your prompts from the prompt object. Here's an example using OpenAI:
+
+```ruby
+# frozen_string_literal: true
+
+class ApplicationPrompt < ActivePrompt::Base
+  def run(model: 'gpt-3.5-turbo-0613', json_output: false, temperature: 1.0)
+    client = OpenAI::Client.new
+    parameters = {
+      model: model,
+      messages: render_messages,
+      temperature: temperature
+    }
+    parameters[:response_format] = { type: 'json_object' } if json_output
+    client.chat(parameters: parameters)
+  end
+end
+```
+
+Using this, we can simplify the code shown earlier:
+
+```ruby
+prompt = ModerateUserCommentPrompt.new(comment: user_comment)
+response = prompt.run(model: 'gpt-4o')
+output = response.dig("choices", 0, "message", "content")
+data = JSON.parse(output)
 puts data
 ```
 
