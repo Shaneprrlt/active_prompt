@@ -40,6 +40,10 @@ module ActivePrompt
       ]
     end
 
+    def run
+      raise NotImplementedError, "Please implement this function using your chosen LLM library"
+    end
+
     private
 
     def render_template(template_name)
