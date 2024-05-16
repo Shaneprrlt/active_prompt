@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.1.3] - 2024-05-15
+
+- Require all the lib files into the gem root file
+
 ## [0.1.2] - 2024-05-15
 
 - Restructure the lib folder so generators are recognized by rails
