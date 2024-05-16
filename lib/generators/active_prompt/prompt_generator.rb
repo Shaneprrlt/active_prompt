@@ -11,8 +11,8 @@ module ActivePrompt
 
       def create_prompt_files
         empty_directory "app/prompts/#{name.underscore}"
-        template "system.liquid", "app/prompts/#{name.underscore}/system.liquid"
-        template "user.liquid", "app/prompts/#{name.underscore}/user.liquid"
+        template "system.liquid", "app/prompts/#{name.underscore}_prompt/system.liquid"
+        template "user.liquid", "app/prompts/#{name.underscore}_prompt/user.liquid"
         create_file "app/prompts/#{name.underscore}_prompt.rb", <<~RUBY
           # This is a generated prompt class for #{file_name}
           class #{name.camelize}Prompt < ActivePrompt::Base
