@@ -16,7 +16,10 @@ module ActivePrompt
         create_file "app/prompts/#{name.underscore}/prompt.rb", <<~RUBY
           # This is a generated prompt class for #{file_name}
           class #{name.camelize}Prompt < ActivePrompt::Base
-            # Define your prompt methods here
+            # Define your required template variables here, e.g.
+            # variable :name
+            # variable :age
+            # variable :gender
           end
         RUBY
       end
