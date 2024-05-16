@@ -9,8 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["Shane Perreault"]
   spec.email = ["shaneprrlt@gmail.com"]
   spec.summary = "Easily create and manage LLM prompt templates in your rails app."
-  spec.description = "Easily create and manage LLM prompt templates in your rails app." \
-                     "Use your own custom templating engine like ERB or Shopify Liquid."
+  spec.description = "Easily create and manage LLM prompt templates in your rails app."
   spec.homepage = "https://www.github.com/Shaneprrlt/active_prompt"
   spec.required_ruby_version = ">= 2.6.0"
   spec.metadata["homepage_uri"] = spec.homepage
