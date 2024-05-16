@@ -49,7 +49,7 @@ module ActivePrompt
         self.class.variables.map do |var|
           [var, send(var)]
         end.to_h
-      Liquid::Template.parse(template).render(context)
+      Liquid::Template.parse(template).render(context.stringify_keys)
     end
   end
 end
