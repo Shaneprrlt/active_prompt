@@ -10,13 +10,12 @@ module ActivePrompt
       source_root File.expand_path("templates", __dir__)
 
       def create_prompt_files
-        file_name = file_name.underscore
-        empty_directory "app/prompts/#{file_name}"
-        template "system.liquid", "app/prompts/#{file_name}/system.liquid"
-        template "user.liquid", "app/prompts/#{file_name}/user.liquid"
-        create_file "app/prompts/#{file_name}/prompt.rb", <<~RUBY
+        empty_directory "app/prompts/#{name.underscore}"
+        template "system.liquid", "app/prompts/#{name.underscore}/system.liquid"
+        template "user.liquid", "app/prompts/#{name.underscore}/user.liquid"
+        create_file "app/prompts/#{name.underscore}/prompt.rb", <<~RUBY
           # This is a generated prompt class for #{file_name}
-          class #{file_name.camelize}Prompt < ActivePrompt::Base
+          class #{name.camelize}Prompt < ActivePrompt::Base
             # Define your prompt methods here
           end
         RUBY
