@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require 'rails/generators'
+require "rails/generators"
 
 module ActivePrompt
   module Generators
     # This generator creates a new prompt in the app/prompts directory
-    class PromptGenerator < Rails::Generators::Base
+    class PromptGenerator < Rails::Generators::NamedBase
       desc "This generator creates a new prompt in the app/prompts directory"
       source_root File.expand_path("templates", __dir__)
 
-      def create_prompt_files(file_name)
+      def create_prompt_files
         file_name = file_name.underscore
         empty_directory "app/prompts/#{file_name}"
         template "system.liquid", "app/prompts/#{file_name}/system.liquid"
