@@ -10,7 +10,7 @@ module ActivePrompt
       source_root File.expand_path("templates", __dir__)
 
       def create_prompt_files
-        empty_directory "app/prompts/#{name.underscore}"
+        empty_directory "app/prompts/#{name.underscore}_prompt"
         template "system.liquid", "app/prompts/#{name.underscore}_prompt/system.liquid"
         template "user.liquid", "app/prompts/#{name.underscore}_prompt/user.liquid"
         create_file "app/prompts/#{name.underscore}_prompt.rb", <<~RUBY

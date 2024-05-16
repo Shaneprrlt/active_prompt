@@ -43,7 +43,7 @@ module ActivePrompt
     private
 
     def render_template(template_name)
-      template_path = File.join("app", "prompts", "#{self.class.name.underscore}_prompt", template_name)
+      template_path = File.join("app", "prompts", "#{self.class.name.underscore}", template_name)
       template = File.read(template_path)
       context = # Dynamic method call to get the variable value
         self.class.variables.map do |var|
