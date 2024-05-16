@@ -9,7 +9,8 @@ module ActivePrompt
       desc "This generator creates a new prompt in the app/prompts directory"
       source_root File.expand_path("templates", __dir__)
 
-      def create_prompt_files
+      def create_prompt_files(file_name)
+        file_name = file_name.underscore
         empty_directory "app/prompts/#{file_name}"
         template "system.liquid", "app/prompts/#{file_name}/system.liquid"
         template "user.liquid", "app/prompts/#{file_name}/user.liquid"
