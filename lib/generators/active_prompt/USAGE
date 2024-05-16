@@ -1,0 +1,3 @@
+Add a new prompt class and corresponding prompt templates.
+
+    rails generate active_prompt:prompt my_prompt
